@@ -58,13 +58,10 @@ class PokemonAbilityAddView(APIView):
         pokemon_id = request.data.get('pokemon')
         ability_id = request.data.get('ability')
 
-        # Проверка, существуют ли Pokemon и Ability с переданными ID
         pokemon = get_object_or_404(Pokemon, id=pokemon_id)
         ability = get_object_or_404(Ability, id=ability_id)
 
-        # Создание записи в таблице Pokemon_Ability
         pokemon_ability = Pokemon_Ability.objects.create(pokemon=pokemon, ability=ability)
 
-        # Сериализация и возврат данных
         response_serializer = PokemonAbilityResponseSerializer(pokemon_ability)
         return Response(response_serializer.data, status=status.HTTP_201_CREATED)

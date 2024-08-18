@@ -24,7 +24,7 @@ class PokemonAbilityCreateSerializer(serializers.Serializer):
     species = serializers.CharField(max_length=100)
     pokemon_element = serializers.ChoiceField(choices=Pokemon.Element.choices)
     rarity = serializers.ChoiceField(choices=Pokemon.Rarity.choices)
-    other = serializers.CharField(max_length=255, allow_blank=True)
+    other = serializers.CharField(required=False, allow_blank=True)
     ability_name = serializers.CharField(max_length=100)
     description = serializers.CharField()
     cost = serializers.IntegerField()
