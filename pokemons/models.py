@@ -60,5 +60,4 @@ class Ability(models.Model):
 
 class Pokemon_Ability(models.Model):
     pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE)
-    firts_ability = models.ForeignKey(Ability, on_delete=models.CASCADE, related_name="first_ability")
-    second_ability = models.ForeignKey(Ability, on_delete=models.CASCADE, related_name="second_ability")
+    ability = models.ForeignKey(Ability, on_delete=models.CASCADE, related_name="ability")
