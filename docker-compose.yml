@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:9.6
+    volumes:
+      - ~/.pg/pg_data/yt:/var/lib/postgresql/data
+    env_file:
+      - .env
+  web:
+    build: .
+    depends_on:
+      - db
+    env_file:
+      - .env
+    command: >
+      bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+
